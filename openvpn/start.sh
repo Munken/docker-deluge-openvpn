@@ -41,17 +41,17 @@ fi
 
 # add OpenVPN user/pass
 if [[ "${OPENVPN_USERNAME}" == "**None**" ]] || [[ "${OPENVPN_PASSWORD}" == "**None**" ]] ; then
-  if [[ ! -f /data/openvpn-credentials.txt ]] ; then
+  if [[ ! -f /config/openvpn-credentials.txt ]] ; then
     echo "OpenVPN credentials not set. Exiting."
     exit 1
   fi
   echo "Found existing OPENVPN credentials..."
 else
   echo "Setting OPENVPN credentials..."
-  mkdir -p /data
-  echo "${OPENVPN_USERNAME}" > /data/openvpn-credentials.txt
-  echo "${OPENVPN_PASSWORD}" >> /data/openvpn-credentials.txt
-  chmod 600 /data/openvpn-credentials.txt
+  mkdir -p /config
+  echo "${OPENVPN_USERNAME}" > /config/openvpn-credentials.txt
+  echo "${OPENVPN_PASSWORD}" >> /config/openvpn-credentials.txt
+  chmod 600 /config/openvpn-credentials.txt
 fi
 
 ## add deluge credentials from env vars
